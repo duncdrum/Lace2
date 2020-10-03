@@ -13,7 +13,7 @@ services:
 env:
   - img=existdb/existdb:latest
   - img=existdb/existdb:release
-  - img=existdb/existdb:4.6.1
+  # - img=existdb/existdb:4.6.1
 
 before_install:
   - docker pull $img
