@@ -1,4 +1,5 @@
 # Lace2: From OCR to TEI
+[![Build Status](https://travis-ci.com/duncdrum/Lace2.svg?branch=master)](https://travis-ci.com/duncdrum/Lace2)
 
 (A complete [manual](https://docs.google.com/document/d/1ZErAy0ytybk9Jozh5jjunXu9JozZg4Nz35fDnGui3Sk/edit?usp=sharing) is available in Google Docs format.)
 
@@ -17,4 +18,3 @@ Lace is built upon the well-established [eXist-db](http://exist-db.org/exist/app
 Bruce Robertson
 
 2020-06-29
-
