@@ -2,9 +2,9 @@
 <meta xmlns="http://exist-db.org/xquery/repo">
     <description>An eXist-db database for viewing and editing ancient Greek and Latin OCR.</description>
     <author>Bruce Robertson</author>
-    <website/>
+    <website>http://trylace.org/index.html</website>
     <status>beta</status>
-    <license>GNU-LGPL</license>
+    <license>GPL-3.0</license>
     <copyright>true</copyright>
     <type>application</type>
     <target>lace</target>
