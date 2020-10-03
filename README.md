@@ -15,6 +15,15 @@ Lace is built upon the well-established [eXist-db](http://exist-db.org/exist/app
 
 [Lace-2 Tools](https://github.com/brobertson/Lace2-tools) is a separate repository for Lace-related code, especially pre-processing.
 
+## Warning
+When installing the lace2 application into an existing exist-db instance the source for `public-repo` applications is modified. To restore `package-manager` lookups to the default exist-db application repository modify `/db/apps/packageservice/configuration.xml` to point to the default repo:
+
+```xml
+<repositories>
+<!-- <repository active="true" default="true">http://heml.ddns.net:8080/exist/apps/public-repo/</repository> -->
+  <repository active="true" default="true">http://exist-db.org/exist/apps/public-repo</repository>
+</repositories>
+```
 Bruce Robertson
 
 2020-06-29
