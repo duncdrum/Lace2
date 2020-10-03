@@ -1,0 +1,27 @@
+language: java
+dist: xenial
+
+jdk:
+  - openjdk8
+  - openjdk11
+
+# Tell Travis that we are using Docker.
+services:
+  - docker
+
+# Always test against current and upcoming releases.
+env:
+  - img=existdb/existdb:latest
+  - img=existdb/existdb:release
+  - img=existdb/existdb:4.6.1
+
+install:
+  - ant
+
+# take the .xar created above and install and deploy in a clean eXist-db instance.
+before_script:
+  - docker cp ./build/*.xar exist-ci:exist/autodeploy
+  - docker start exist-ci
+  # exist needs time
+  - sleep 30
+  - docker ps
