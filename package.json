@@ -1,0 +1,31 @@
+{
+  "name": "lace2",
+  "version": "0.6.15",
+  "description": "Visualizing, Editing and Searching Polylingual OCR Results",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/mocha/ --recursive --exit",
+    "cypress": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duncdrum/Lace2.git"
+  },
+  "keywords": [
+    "lace2",
+    "exist-db",
+    "hocr",
+    "editor",
+    "expath",
+    "xquery"
+  ],
+  "author": "Bruce Robertson",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/duncdrum/Lace2/issues"
+  },
+  "homepage": "https://github.com/duncdrum/Lace2#readme",
+  "devDependencies": {
+    "cypress": "^5.3.0"
+  }
+}

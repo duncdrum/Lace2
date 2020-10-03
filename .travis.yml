@@ -21,6 +21,7 @@ before_install:
 
 install:
   - ant
+  - npm ci
 
 # take the .xar created above and install and deploy in a clean eXist-db instance.
 before_script:
@@ -31,4 +32,4 @@ before_script:
   - docker ps
 
 script:
-  - docker ps  
+  - npm run cypress
