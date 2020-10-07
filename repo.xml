@@ -10,5 +10,4 @@
     <target>lace</target>
     <prepare>pre-install.xql</prepare>
     <finish>admin</finish>
-    <permissions user="admin" password="" group="dba" mode="rw-rw-r--"/>
 </meta>
