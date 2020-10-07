@@ -610,7 +610,8 @@ declare function app:makeZoningMenu() {
 declare function app:sidebyside($node as node(), $model as map(*), $collectionUri as xs:string, $positionInCollection as xs:integer?) {
 (:  The $collectionUri is for the run collection
  :  The $positionInCollection is an *image* position 
- :  Sorry for the confusion. :)
+ :  Sorry for the confusion. 
+ : TODO: DP: simplify browser URL when in side-by-side:)
 let $imageCollection := app:imageCollectionFromCollectionUri($collectionUri)
 let $meAsPng := app:sortPngCollection($imageCollection)[$positionInCollection]
 let $myImageHeight := image:get-height(util:binary-doc(concat($imageCollection,"/",$meAsPng)))
