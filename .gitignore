@@ -2,3 +2,5 @@ build/
 node_modules/
 test/cypress/videos/*
 test/cypress/screenshots/*
+*.code-workspace
+.existdb.json

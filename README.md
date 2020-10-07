@@ -23,6 +23,7 @@ When installing the lace2 application into an existing exist-db instance a separ
   <repository active="true" default="true">https://exist-db.org/exist/apps/public-repo</repository>
 </repositories>
 ```
+
 Bruce Robertson
 
 2020-06-29

@@ -22,6 +22,13 @@ declare function local:mkcol-recursive($collection, $components) {
         ()
 };
 
+declare function local:add-repo($url as xs:string) {
+    let $repo-config := doc("/db/apps/packageservice/configuration.xml")//repository[1]
+    let $repo := <repository active="true" default="false">{$url}</repository>
+    return
+    update insert $repo following $repo-config
+}
+
 (: Helper function to recursively create a collection hierarchy. :)
 declare function local:mkcol($collection, $path) {
     local:mkcol-recursive($collection, tokenize($path, "/"))
@@ -30,5 +37,4 @@ declare function local:mkcol($collection, $path) {
 (: store the collection configuration :)
 local:mkcol("/db/system/config", $target),
 xdb:store-files-from-pattern(concat("/system/config", $target), $dir, "*.xconf"),
-update insert <repository active="true" default="false">http://heml.ddns.net:8080/exist/apps/public-repo/</repository>
- following doc("/db/apps/packageservice/configuration.xml")/settings/repositories/repository[1]
+local:add-repo('http://heml.ddns.net:8080/exist/apps/public-repo/')
