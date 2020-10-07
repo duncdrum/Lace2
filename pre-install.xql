@@ -1,4 +1,4 @@
-xquery version "1.0";
+xquery version "3.1";
 
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
 
@@ -11,6 +11,11 @@ declare variable $dir external;
 (: the target collection into which the app is deployed :)
 declare variable $target external;
 
+(: Helper function to recursively create a collection hierarchy. :)
+declare function local:mkcol($collection, $path) {
+    local:mkcol-recursive($collection, tokenize($path, "/"))
+};
+
 declare function local:mkcol-recursive($collection, $components) {
     if (exists($components)) then
         let $newColl := concat($collection, "/", $components[1])
@@ -22,19 +27,24 @@ declare function local:mkcol-recursive($collection, $components) {
         ()
 };
 
+declare function local:mkcol-data($data-parent as xs:string) {
+    let $parent-col := xmldb:create-collection('/db', $data-parent)
+    for $c in ("/metadata", "/images", "/texts")
+    return
+        xmldb:create-collection('/db' || $data-parent, $c)
+};
+
 declare function local:add-repo($url as xs:string) {
-    let $repo-config := doc("/db/apps/packageservice/configuration.xml")//repository[1]
+    let $repo-config := doc("/db/apps/packageservice/configuration.xml")//repository
     let $repo := <repository active="true" default="false">{$url}</repository>
     return
-    update insert $repo following $repo-config
-}
-
-(: Helper function to recursively create a collection hierarchy. :)
-declare function local:mkcol($collection, $path) {
-    local:mkcol-recursive($collection, tokenize($path, "/"))
+        if (contains($repo-config/text(), $repo/text())) then ()
+        else (update insert $repo following $repo-config[1]) 
 };
+
 
 (: store the collection configuration :)
 local:mkcol("/db/system/config", $target),
 xdb:store-files-from-pattern(concat("/system/config", $target), $dir, "*.xconf"),
+local:mkcol-data('/Lace2Data'),
 local:add-repo('http://heml.ddns.net:8080/exist/apps/public-repo/')
