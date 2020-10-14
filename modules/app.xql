@@ -427,7 +427,8 @@ declare function app:fixHocrPageNode($hocrPageNode as node(), $innerAddress as x
 (: 
  : generate a <img> tag for a given $imageFile in the database 
  :)
-declare 
+declare
+%test:name('make img tag') 
 %test:arg('imageFile', "/db/Lace2Data/images/myname 4athing/myname 4athing_0020.jpg") %test:assertEquals('<img width="500" class="img-responsive" onclick="return page_back()" id="page_image" src="/db/Lace2Data/images/myname 4athing/myname 4athing_0020.jpg" alt="photo"/>')
 function app:getImageLink($imageFile as xs:string?) {
     (: if (util:binary-doc-available) works with these binary files, but we need to get at it before the /rest path is put on. :)
