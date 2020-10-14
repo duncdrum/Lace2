@@ -32,4 +32,5 @@ before_script:
   - docker ps
 
 script:
+  - npm test
   - npm run cypress
